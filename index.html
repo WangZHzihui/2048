@@ -19,7 +19,6 @@ body {
     min-height: 100vh;
     background: #eeeae3;
     color: #514f49;
-    font-family: "Microsoft JhengHei", "微软正黑体", "Microsoft YaHei", sans-serif;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -42,20 +41,12 @@ button {
     cursor: pointer;
     transition: background .2s;
     font-family: inherit;
-    font-weight: 700;
 }
 
-button:hover {
-    filter: brightness(.96);
-}
+button:hover { filter: brightness(.96); }
+button:active { transform: scale(.98); }
 
-button:active {
-    transform: scale(.98);
-}
-
-/* ================================
-   主页
-================================ */
+/* 主页 */
 
 .home-screen {
     width: 100%;
@@ -93,7 +84,6 @@ button:active {
     margin-bottom: 15px;
     color: #77766d;
     font-size: 16px;
-    font-weight: bold;
 }
 
 .mode-options {
@@ -111,9 +101,7 @@ button:active {
     transition: .2s;
 }
 
-.mode-card:hover {
-    background: #efede5;
-}
+.mode-card:hover { background: #efede5; }
 
 .mode-card.selected {
     border-color: #a9b3a5;
@@ -128,8 +116,7 @@ button:active {
     font-size: 14px;
 }
 
-.preview-circle,
-.preview-square {
+.preview-circle, .preview-square {
     width: 65px;
     height: 65px;
     margin: auto;
@@ -138,21 +125,16 @@ button:active {
     justify-content: center;
     color: white;
     font-size: 25px;
-    font-weight: bold;
     background: #c8b9a6;
 }
 
-.preview-circle {
-    border-radius: 50%;
-}
+.preview-circle { border-radius: 50%; }
 
 .preview-square {
     border-radius: 15px;
     background: #b9c5b4;
     transform: rotate(-8deg);
 }
-
-/* 模式选项 */
 
 .game-mode-options {
     display: grid;
@@ -170,9 +152,7 @@ button:active {
     text-align: center;
 }
 
-.game-mode-card:hover {
-    background: #efede5;
-}
+.game-mode-card:hover { background: #efede5; }
 
 .game-mode-card.selected {
     border-color: #a9b3a5;
@@ -186,25 +166,7 @@ button:active {
     font-size: 14px;
 }
 
-.start-button {
-    display: block;
-    width: 100%;
-    margin-top: 28px;
-    padding: 15px;
-    background: #a9b3a5;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 12px;
-}
-
-.start-button:hover {
-    background: #929f8e;
-}
-
-/* ================================
-   游戏界面
-================================ */
+/* 游戏界面 */
 
 .container {
     width: 100%;
@@ -257,9 +219,7 @@ button:active {
     margin-bottom: 12px;
 }
 
-.controls button {
-    flex: 1;
-}
+.controls button { flex: 1; }
 
 canvas {
     display: block;
@@ -278,9 +238,7 @@ canvas {
     line-height: 1.7;
 }
 
-/* ================================
-   游戏结束弹窗
-================================ */
+/* 游戏结束 */
 
 .overlay {
     position: fixed;
@@ -300,9 +258,7 @@ canvas {
     text-align: center;
 }
 
-.dialog h2 {
-    color: #8d9587;
-}
+.dialog h2 { color: #8d9587; }
 
 .dialog button {
     display: block;
@@ -310,137 +266,97 @@ canvas {
     margin-top: 12px;
 }
 
-/* ================================
-   手机屏幕适配
-================================ */
-
 @media (max-width: 380px) {
-    .home-card {
-        padding: 28px 15px;
-    }
-
-    .mode-options {
-        gap: 8px;
-    }
-
-    .preview-circle,
-    .preview-square {
+    .home-card { padding: 28px 15px; }
+    .mode-options { gap: 8px; }
+    .preview-circle, .preview-square {
         width: 55px;
         height: 55px;
     }
-
-    .game-mode-options {
-        gap: 8px;
-    }
+    .game-mode-options { gap: 8px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================================
-     主页
-================================ -->
-
 <div class="home-screen" id="homeScreen">
     <div class="home-card">
-
         <h1>合成2048</h1>
-
-        <!-- 形状选择 -->
 
         <div class="mode-title">① 选择图形形状</div>
 
         <div class="mode-options">
-
-            <div class="mode-card selected"
-                 id="selectCircle"
+            <div class="mode-card selected" id="selectCircle"
                  onclick="selectShape('circle')">
-
                 <div class="preview-circle">2</div>
                 <strong>圆形</strong>
             </div>
 
-            <div class="mode-card"
-                 id="selectSquare"
+            <div class="mode-card" id="selectSquare"
                  onclick="selectShape('square')">
-
                 <div class="preview-square">2</div>
                 <strong>方形</strong>
             </div>
-
         </div>
-
-        <!-- 游戏模式选择 -->
 
         <div class="mode-title">② 选择游戏模式</div>
 
         <div class="game-mode-options">
-
-            <div class="game-mode-card selected"
-                 id="selectNormal"
+            <div class="game-mode-card selected" id="selectNormal"
                  onclick="selectGameMode('normal')">
                 <strong>常规模式</strong>
             </div>
 
-            <div class="game-mode-card"
-                 id="select32"
+            <div class="game-mode-card" id="select32"
                  onclick="selectGameMode('32')">
                 <strong>32模式</strong>
             </div>
 
-            <div class="game-mode-card"
-                 id="selectCheat"
+            <div class="game-mode-card" id="selectCheat"
                  onclick="selectGameMode('cheat')">
                 <strong>作弊模式</strong>
             </div>
 
-            <div class="game-mode-card"
-                 id="selectMixed"
+            <div class="game-mode-card" id="selectMixed"
                  onclick="selectGameMode('mixed')">
                 <strong>杂糅模式</strong>
             </div>
 
+            <div class="game-mode-card" id="selectReverse"
+                 onclick="selectGameMode('reverse')">
+                <strong>反向合成</strong>
+            </div>
+
+            <div class="game-mode-card" id="selectReverseCheat"
+                 onclick="selectGameMode('reverseCheat')">
+                <strong>反向作弊</strong>
+            </div>
         </div>
 
-        <button class="start-button" onclick="startGame()">
-            开始游戏
-        </button>
-
+        <button class="start-button" onclick="startGame()">开始游戏</button>
     </div>
 </div>
 
-
-<!-- ================================
-     游戏界面
-================================ -->
-
 <div class="container" id="gameScreen" style="display:none;">
-
     <h1>合成2048</h1>
-
-    <div class="subtitle" id="gameModeText">
-        圆形 · 常规模式
-    </div>
+    <div class="subtitle" id="gameModeText">圆形 · 常规模式</div>
 
     <div class="panel">
-
         <div class="info">
-
             <div class="info-box">
                 <small>当前分数</small>
                 <strong id="score">0</strong>
             </div>
-
             <div class="info-box">
                 <small>当前数字</small>
                 <strong id="next">2</strong>
             </div>
-
         </div>
 
         <div class="controls">
             <button id="restartBtn">重新开始</button>
+            <button id="soundBtn">音效：开启</button>
             <button id="homeBtn">返回主页</button>
         </div>
 
@@ -450,31 +366,17 @@ canvas {
             点击或触摸游戏区域即可投放数字<br>
             两个相同数字碰撞后会自动合成
         </div>
-
     </div>
 </div>
-
-
-<!-- ================================
-     游戏结束弹窗
-================================ -->
 
 <div class="overlay" id="overlay">
     <div class="dialog">
-
         <h2>游戏结束</h2>
-
-        <p>
-            本次得分：
-            <strong id="finalScore">0</strong>
-        </p>
-
+        <p>本次得分：<strong id="finalScore">0</strong></p>
         <button onclick="restartGame()">再玩一次</button>
         <button onclick="backToHome()">返回主页</button>
-
     </div>
 </div>
-
 
 <script>
 const canvas = document.getElementById("game");
@@ -487,6 +389,7 @@ const WALL = 18;
 const DANGER_LINE = 110;
 
 const COLORS = {
+    1: "#d5a66f",
     2: "#c8b9a6",
     4: "#b9c5b4",
     8: "#a7b8aa",
@@ -501,6 +404,7 @@ const COLORS = {
 };
 
 const RADII = {
+    1: 92,
     2: 15,
     4: 19,
     8: 24,
@@ -514,44 +418,113 @@ const RADII = {
     2048: 75
 };
 
-
-// ================================
 // 物理参数
-// ================================
-
 const GRAVITY = 0.34;
 const AIR_FRICTION = 0.999;
-
 const CONTACT_FRICTION = 0.28;
 const GROUND_FRICTION = 0.90;
-
 const RESTITUTION = 0.16;
 const RESTITUTION_THRESHOLD = 0.8;
-
 const ANGULAR_DAMPING = 0.985;
 const ANGULAR_FRICTION = 0.00025;
 const ANGULAR_STOP_THRESHOLD = 0.001;
 const MAX_ANGULAR_SPEED = 0.09;
-
 const MAX_LINEAR_SPEED = 12;
-
 const POSITION_SLOP = 0.15;
 const POSITION_PERCENT = 0.65;
-
 const JELLY_STRENGTH = 0.20;
-
 const SQUEEZE_DAMPING = 0.58;
 const SQUEEZE_SPRING = 0.10;
 
+// 音效系统
+let audioContext = null;
+let soundEnabled = true;
 
-// ================================
+function initAudio() {
+    if (!audioContext) {
+        const AudioContextClass =
+            window.AudioContext || window.webkitAudioContext;
+
+        if (AudioContextClass) {
+            audioContext = new AudioContextClass();
+        }
+    }
+
+    if (audioContext && audioContext.state === "suspended") {
+        audioContext.resume();
+    }
+}
+
+function playTone(frequency, duration, type = "sine",
+                  volume = 0.12, endFrequency = null) {
+    if (!soundEnabled) return;
+
+    initAudio();
+    if (!audioContext) return;
+
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+    const now = audioContext.currentTime;
+
+    oscillator.type = type;
+    oscillator.frequency.setValueAtTime(frequency, now);
+
+    if (endFrequency !== null) {
+        oscillator.frequency.exponentialRampToValueAtTime(
+            Math.max(1, endFrequency), now + duration
+        );
+    }
+
+    gain.gain.setValueAtTime(volume, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+
+    oscillator.start(now);
+    oscillator.stop(now + duration);
+}
+
+function playDropSound() {
+    playTone(180, 0.12, "triangle", 0.10, 85);
+}
+
+function playMergeSound() {
+    playTone(440, 0.13, "sine", 0.10, 660);
+    setTimeout(() => playTone(660, 0.16, "sine", 0.09, 880), 65);
+}
+
+function playWinSound() {
+    [523, 659, 784, 1046, 1318].forEach((note, i) => {
+        setTimeout(() => playTone(note, 0.35, "sine", 0.13), i * 130);
+    });
+}
+
+function playReverseFinalSound() {
+    [392, 523, 659, 784, 1046, 1568].forEach((note, i) => {
+        setTimeout(() => playTone(note, 0.55, "triangle", 0.15), i * 150);
+    });
+}
+
+function playDangerSound() {
+    playTone(620, 0.18, "square", 0.08, 390);
+    setTimeout(() => playTone(620, 0.18, "square", 0.08, 390), 220);
+}
+
+document.getElementById("soundBtn").onclick = function() {
+    soundEnabled = !soundEnabled;
+    this.textContent = soundEnabled ? "音效：开启" : "音效：关闭";
+
+    if (soundEnabled) {
+        initAudio();
+        playTone(520, 0.12, "sine", 0.08);
+    }
+};
+
 // 游戏状态
-// ================================
-
 let pieces = [];
 let effects = [];
 let fireworks = [];
-
 let score = 0;
 
 let mode = "circle";
@@ -561,7 +534,6 @@ let gameMode = "normal";
 
 let nextValue = 2;
 let nextShape = "circle";
-
 let dropCount = 0;
 
 let gameOver = false;
@@ -569,15 +541,10 @@ let gameStarted = false;
 
 let lastTime = 0;
 let dangerTimer = 0;
-
 let pointerX = W / 2;
 let canDrop = true;
 
-
-// ================================
-// 主页：形状选择
-// ================================
-
+// 主页形状选择
 function selectShape(newShape) {
     if (gameStarted) return;
 
@@ -590,54 +557,48 @@ function selectShape(newShape) {
         .classList.toggle("selected", newShape === "square");
 }
 
-
-// ================================
-// 主页：游戏模式选择
-// ================================
-
+// 主页模式选择
 function selectGameMode(newMode) {
     if (gameStarted) return;
 
     selectedMode = newMode;
 
-    document.getElementById("selectNormal")
-        .classList.toggle("selected", newMode === "normal");
+    const modeElements = {
+        normal: "selectNormal",
+        "32": "select32",
+        cheat: "selectCheat",
+        mixed: "selectMixed",
+        reverse: "selectReverse",
+        reverseCheat: "selectReverseCheat"
+    };
 
-    document.getElementById("select32")
-        .classList.toggle("selected", newMode === "32");
-
-    document.getElementById("selectCheat")
-        .classList.toggle("selected", newMode === "cheat");
-
-    document.getElementById("selectMixed")
-        .classList.toggle("selected", newMode === "mixed");
+    Object.entries(modeElements).forEach(([id, elementId]) => {
+        document.getElementById(elementId)
+            .classList.toggle("selected", newMode === id);
+    });
 }
 
-
-// ================================
 // 开始游戏
-// ================================
-
 function startGame() {
+    initAudio();
+
     mode = selectedShape;
     gameMode = selectedMode;
-
     gameStarted = true;
 
     document.getElementById("homeScreen").style.display = "none";
     document.getElementById("gameScreen").style.display = "block";
 
     let shapeText = selectedShape === "circle" ? "圆形" : "方形";
-
-    if (gameMode === "mixed") {
-        shapeText = "圆形 + 方形";
-    }
+    if (gameMode === "mixed") shapeText = "圆形 + 方形";
 
     const modeNames = {
         normal: "常规模式",
         "32": "32模式",
         cheat: "作弊模式",
-        mixed: "杂糅模式"
+        mixed: "杂糅模式",
+        reverse: "反向合成",
+        reverseCheat: "反向作弊"
     };
 
     document.getElementById("gameModeText").textContent =
@@ -646,11 +607,7 @@ function startGame() {
     restartGame();
 }
 
-
-// ================================
 // 返回主页
-// ================================
-
 function backToHome() {
     gameStarted = false;
     gameOver = true;
@@ -660,30 +617,22 @@ function backToHome() {
     document.getElementById("homeScreen").style.display = "flex";
 }
 
-
-// ================================
 // 图形对象
-// ================================
-
 class Piece {
     constructor(x, y, value, shape) {
         this.x = x;
         this.y = y;
         this.value = value;
-
         this.shape = shape || mode;
-
         this.radius = RADII[value];
 
         this.vx = 0;
         this.vy = 0;
-
         this.rotation = Math.random() * Math.PI * 2;
         this.angularVelocity = 0;
 
         this.squeezeX = 1;
         this.squeezeY = 1;
-
         this.squeezeVX = 0;
         this.squeezeVY = 0;
 
@@ -692,52 +641,25 @@ class Piece {
 
         this.mass = 1;
         this.inertia = 1;
-
         this.updateMassProperties();
     }
 
     updateMassProperties() {
         if (this.shape === "circle") {
             this.mass = Math.PI * this.radius * this.radius;
-
-            this.inertia =
-                0.5 * this.mass *
-                this.radius * this.radius;
+            this.inertia = 0.5 * this.mass * this.radius * this.radius;
         } else {
             const side = this.radius * 1.65;
-
             this.mass = side * side;
-
-            this.inertia =
-                this.mass * side * side / 6;
+            this.inertia = this.mass * side * side / 6;
         }
     }
-
-    getMass() {
-        return this.mass;
-    }
-
-    getInertia() {
-        return this.inertia;
-    }
 }
 
-
-// ================================
 // 向量工具
-// ================================
-
-function cross(ax, ay, bx, by) {
-    return ax * by - ay * bx;
-}
-
-function dot(ax, ay, bx, by) {
-    return ax * bx + ay * by;
-}
-
-function clamp(value, min, max) {
-    return Math.max(min, Math.min(max, value));
-}
+function cross(ax, ay, bx, by) { return ax * by - ay * bx; }
+function dot(ax, ay, bx, by) { return ax * bx + ay * by; }
+function clamp(value, min, max) { return Math.max(min, Math.min(max, value)); }
 
 function velocityAtPoint(p, rx, ry) {
     return {
@@ -749,86 +671,73 @@ function velocityAtPoint(p, rx, ry) {
 function clampSpeed(p) {
     p.vx = clamp(p.vx, -MAX_LINEAR_SPEED, MAX_LINEAR_SPEED);
     p.vy = clamp(p.vy, -MAX_LINEAR_SPEED, MAX_LINEAR_SPEED);
-
     p.angularVelocity = clamp(
-        p.angularVelocity,
-        -MAX_ANGULAR_SPEED,
-        MAX_ANGULAR_SPEED
+        p.angularVelocity, -MAX_ANGULAR_SPEED, MAX_ANGULAR_SPEED
     );
 }
 
-
-// ================================
-// 基础功能：随机数字
-// ================================
-
+// 随机数字
 function randomNext() {
-    if (gameMode === "32") {
-        return 32;
+    // 反向合成：从大数字开始掉落
+    if (gameMode === "reverse") {
+        const values = [2048, 1024, 512, 256, 128];
+        const weights = [0.08, 0.14, 0.20, 0.25, 0.33];
+        const r = Math.random();
+        let total = 0;
+
+        for (let i = 0; i < values.length; i++) {
+            total += weights[i];
+            if (r < total) return values[i];
+        }
+        return 128;
     }
 
-    if (gameMode === "cheat") {
-        if (dropCount === 0 || dropCount === 4) {
-            return 1024;
-        }
+    // 反向作弊：所有数字均有机会掉落
+    // 第一次和第五次掉落固定为2
+    if (gameMode === "reverseCheat") {
+        if (dropCount === 0 || dropCount === 4) return 2;
 
         const values = [
-            2, 4, 8, 16, 32,
-            64, 128, 256, 512, 1024
+            2, 4, 8, 16, 32, 64,
+            128, 256, 512, 1024, 2048
         ];
 
-        return values[
-            Math.floor(Math.random() * values.length)
-        ];
+        return values[Math.floor(Math.random() * values.length)];
+    }
+
+    if (gameMode === "32") return 32;
+
+    if (gameMode === "cheat") {
+        if (dropCount === 0 || dropCount === 4) return 1024;
+
+        const values = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024];
+        return values[Math.floor(Math.random() * values.length)];
     }
 
     const r = Math.random();
-
     if (r < 0.35) return 2;
     if (r < 0.60) return 4;
     if (r < 0.80) return 8;
     if (r < 0.93) return 16;
-
     return 32;
 }
-
-
-// ================================
-// 随机图形
-// ================================
 
 function randomShape() {
     if (gameMode === "mixed") {
         return Math.random() < 0.5 ? "circle" : "square";
     }
-
     return mode;
 }
-
-
-// ================================
-// 更新下一个图形
-// ================================
 
 function generateNext() {
     nextValue = randomNext();
     nextShape = randomShape();
 }
 
-
-// ================================
-// 更新界面
-// ================================
-
 function updateUI() {
     document.getElementById("score").textContent = score;
     document.getElementById("next").textContent = nextValue;
 }
-
-
-// ================================
-// 创建图形
-// ================================
 
 function createPiece(x, y, value, shape) {
     const p = new Piece(x, y, value, shape || mode);
@@ -836,27 +745,15 @@ function createPiece(x, y, value, shape) {
     return p;
 }
 
-
-// ================================
-// 图形几何
-// ================================
-
-function getSquareHalfSize(p) {
-    return p.radius * 0.825;
-}
+// 方形几何
+function getSquareHalfSize(p) { return p.radius * 0.825; }
 
 function getSquareVertices(p) {
     const h = getSquareHalfSize(p);
-
     const c = Math.cos(p.rotation);
     const s = Math.sin(p.rotation);
 
-    const local = [
-        [-h, -h],
-        [h, -h],
-        [h, h],
-        [-h, h]
-    ];
+    const local = [[-h,-h],[h,-h],[h,h],[-h,h]];
 
     return local.map(v => ({
         x: p.x + v[0] * c - v[1] * s,
@@ -867,47 +764,32 @@ function getSquareVertices(p) {
 function getSquareAxes(p) {
     const c = Math.cos(p.rotation);
     const s = Math.sin(p.rotation);
-
-    return [
-        { x: c, y: s },
-        { x: -s, y: c }
-    ];
+    return [{x:c,y:s},{x:-s,y:c}];
 }
 
 function projectVertices(vertices, axis) {
-    let min = Infinity;
-    let max = -Infinity;
+    let min = Infinity, max = -Infinity;
 
     for (const v of vertices) {
         const value = dot(v.x, v.y, axis.x, axis.y);
-
         min = Math.min(min, value);
         max = Math.max(max, value);
     }
 
-    return { min, max };
+    return {min,max};
 }
-
-
-// ================================
-// 支撑面
-// ================================
 
 function getSupportFace(vertices, axis) {
     let maxProjection = -Infinity;
 
     for (const v of vertices) {
         maxProjection = Math.max(
-            maxProjection,
-            dot(v.x, v.y, axis.x, axis.y)
+            maxProjection, dot(v.x, v.y, axis.x, axis.y)
         );
     }
 
-    const tolerance = 0.5;
-
     const points = vertices.filter(v =>
-        maxProjection -
-        dot(v.x, v.y, axis.x, axis.y) < tolerance
+        maxProjection - dot(v.x, v.y, axis.x, axis.y) < 0.5
     );
 
     return {
@@ -917,434 +799,227 @@ function getSupportFace(vertices, axis) {
 }
 
 function getFaceContacts(verticesA, verticesB, normal) {
-    const tangent = {
-        x: -normal.y,
-        y: normal.x
-    };
-
+    const tangent = {x:-normal.y,y:normal.x};
     const faceA = getSupportFace(verticesA, normal);
-
-    const opposite = {
-        x: -normal.x,
-        y: -normal.y
-    };
-
+    const opposite = {x:-normal.x,y:-normal.y};
     const faceB = getSupportFace(verticesB, opposite);
 
     function tangentRange(points) {
         const values = points.map(p =>
-            dot(p.x, p.y, tangent.x, tangent.y)
+            dot(p.x,p.y,tangent.x,tangent.y)
         );
-
-        return {
-            min: Math.min(...values),
-            max: Math.max(...values)
-        };
+        return {min:Math.min(...values),max:Math.max(...values)};
     }
 
     const rangeA = tangentRange(faceA.points);
     const rangeB = tangentRange(faceB.points);
-
-    const minT = Math.max(rangeA.min, rangeB.min);
-    const maxT = Math.min(rangeA.max, rangeB.max);
-
-    const normalPosition =
-        (faceA.projection - faceB.projection) / 2;
-
-    const contacts = [];
+    const minT = Math.max(rangeA.min,rangeB.min);
+    const maxT = Math.min(rangeA.max,rangeB.max);
+    const normalPosition = (faceA.projection-faceB.projection)/2;
 
     function makePoint(t) {
         return {
-            x: normal.x * normalPosition + tangent.x * t,
-            y: normal.y * normalPosition + tangent.y * t
+            x:normal.x*normalPosition+tangent.x*t,
+            y:normal.y*normalPosition+tangent.y*t
         };
     }
 
-    if (maxT - minT > 0.5) {
-        contacts.push(makePoint(minT));
-        contacts.push(makePoint(maxT));
-    } else {
-        contacts.push(makePoint((minT + maxT) / 2));
-    }
-
-    return contacts;
+    if (maxT-minT>0.5) return [makePoint(minT),makePoint(maxT)];
+    return [makePoint((minT+maxT)/2)];
 }
 
+// 圆形碰撞
+function circleCollision(a,b) {
+    const dx=b.x-a.x, dy=b.y-a.y;
+    const distance=Math.hypot(dx,dy);
+    const overlap=a.radius+b.radius-distance;
 
-// ================================
-// 边界范围
-// ================================
+    if (overlap<=0) return null;
 
-function getBoundaryExtents(p) {
-    if (p.shape === "circle") {
-        return {
-            x: p.radius,
-            y: p.radius
-        };
-    }
-
-    const h = getSquareHalfSize(p);
-
-    const c = Math.cos(p.rotation);
-    const s = Math.sin(p.rotation);
-
-    const extent = h * (Math.abs(c) + Math.abs(s));
+    const nx=distance>0.0001?dx/distance:1;
+    const ny=distance>0.0001?dy/distance:0;
 
     return {
-        x: extent,
-        y: extent
+        nx,ny,overlap,
+        contacts:[{
+            x:a.x+nx*(a.radius-overlap*0.5),
+            y:a.y+ny*(a.radius-overlap*0.5)
+        }]
     };
 }
 
+// 方形 SAT 碰撞
+function squareCollision(a,b) {
+    const verticesA=getSquareVertices(a);
+    const verticesB=getSquareVertices(b);
+    const axes=[...getSquareAxes(a),...getSquareAxes(b)];
 
-// ================================
-// 投放图形
-// ================================
-
-function dropPiece(x) {
-    if (!gameStarted || gameOver || !canDrop) return;
-
-    const r = RADII[nextValue];
-
-    x = clamp(x, WALL + r, W - WALL - r);
-
-    for (const p of pieces) {
-        if (
-            Math.abs(p.x - x) < p.radius + r + 4 &&
-            p.y < 100 &&
-            p.y > 15
-        ) {
-            return;
-        }
-    }
-
-    createPiece(x, 35, nextValue, nextShape);
-
-    dropCount++;
-
-    generateNext();
-    updateUI();
-
-    canDrop = false;
-
-    setTimeout(() => {
-        canDrop = true;
-    }, 180);
-}
-
-
-// ================================
-// 圆形碰撞检测
-// ================================
-
-function circleCollision(a, b) {
-    const dx = b.x - a.x;
-    const dy = b.y - a.y;
-
-    const distance = Math.hypot(dx, dy);
-
-    const overlap = a.radius + b.radius - distance;
-
-    if (overlap <= 0) return null;
-
-    const nx = distance > 0.0001 ? dx / distance : 1;
-    const ny = distance > 0.0001 ? dy / distance : 0;
-
-    const contact = {
-        x: a.x + nx * (a.radius - overlap * 0.5),
-        y: a.y + ny * (a.radius - overlap * 0.5)
-    };
-
-    return {
-        nx,
-        ny,
-        overlap,
-        contacts: [contact]
-    };
-}
-
-
-// ================================
-// 方形 SAT 碰撞检测
-// ================================
-
-function squareCollision(a, b) {
-    const verticesA = getSquareVertices(a);
-    const verticesB = getSquareVertices(b);
-
-    const axes = [
-        ...getSquareAxes(a),
-        ...getSquareAxes(b)
-    ];
-
-    let minOverlap = Infinity;
-    let bestAxis = null;
+    let minOverlap=Infinity,bestAxis=null;
 
     for (const axis of axes) {
-        const projectionA = projectVertices(verticesA, axis);
-        const projectionB = projectVertices(verticesB, axis);
+        const pa=projectVertices(verticesA,axis);
+        const pb=projectVertices(verticesB,axis);
 
-        const overlap =
-            Math.min(projectionA.max, projectionB.max) -
-            Math.max(projectionA.min, projectionB.min);
+        const overlap=Math.min(pa.max,pb.max)-Math.max(pa.min,pb.min);
+        if (overlap<=0) return null;
 
-        if (overlap <= 0) {
-            return null;
-        }
-
-        if (overlap < minOverlap) {
-            minOverlap = overlap;
-            bestAxis = axis;
+        if (overlap<minOverlap) {
+            minOverlap=overlap;
+            bestAxis=axis;
         }
     }
 
-    const dx = b.x - a.x;
-    const dy = b.y - a.y;
-
-    if (dot(dx, dy, bestAxis.x, bestAxis.y) < 0) {
-        bestAxis = {
-            x: -bestAxis.x,
-            y: -bestAxis.y
-        };
+    const dx=b.x-a.x,dy=b.y-a.y;
+    if (dot(dx,dy,bestAxis.x,bestAxis.y)<0) {
+        bestAxis={x:-bestAxis.x,y:-bestAxis.y};
     }
 
-    const contacts = getFaceContacts(
-        verticesA,
-        verticesB,
-        bestAxis
-    );
-
     return {
-        nx: bestAxis.x,
-        ny: bestAxis.y,
-        overlap: minOverlap,
-        contacts
+        nx:bestAxis.x,
+        ny:bestAxis.y,
+        overlap:minOverlap,
+        contacts:getFaceContacts(verticesA,verticesB,bestAxis)
     };
 }
 
+// 圆形与方形碰撞
+function circleSquareCollision(circle,square) {
+    const dx=circle.x-square.x;
+    const dy=circle.y-square.y;
+    const c=Math.cos(square.rotation);
+    const s=Math.sin(square.rotation);
 
-// ================================
-// 圆形与方形碰撞检测
-// ================================
+    const localX=dx*c+dy*s;
+    const localY=-dx*s+dy*c;
+    const h=getSquareHalfSize(square);
 
-function circleSquareCollision(circle, square) {
-    const dx = circle.x - square.x;
-    const dy = circle.y - square.y;
+    const closestX=clamp(localX,-h,h);
+    const closestY=clamp(localY,-h,h);
 
-    const c = Math.cos(square.rotation);
-    const s = Math.sin(square.rotation);
+    const worldX=square.x+closestX*c-closestY*s;
+    const worldY=square.y+closestX*s+closestY*c;
 
-    const localX = dx * c + dy * s;
-    const localY = -dx * s + dy * c;
+    const vx=worldX-circle.x;
+    const vy=worldY-circle.y;
+    const distance=Math.hypot(vx,vy);
 
-    const h = getSquareHalfSize(square);
+    if (distance>=circle.radius) return null;
 
-    const closestX = clamp(localX, -h, h);
-    const closestY = clamp(localY, -h, h);
-
-    const worldX =
-        square.x + closestX * c - closestY * s;
-
-    const worldY =
-        square.y + closestX * s + closestY * c;
-
-    const vx = worldX - circle.x;
-    const vy = worldY - circle.y;
-
-    const distance = Math.hypot(vx, vy);
-
-    if (distance >= circle.radius) return null;
-
-    let nx;
-    let ny;
-
-    if (distance > 0.0001) {
-        nx = vx / distance;
-        ny = vy / distance;
-    } else {
-        nx = 1;
-        ny = 0;
-    }
-
-    const overlap = circle.radius - distance;
-
-    const contact = {
-        x: circle.x + nx * (circle.radius - overlap * 0.5),
-        y: circle.y + ny * (circle.radius - overlap * 0.5)
-    };
+    const nx=distance>0.0001?vx/distance:1;
+    const ny=distance>0.0001?vy/distance:0;
+    const overlap=circle.radius-distance;
 
     return {
-        nx,
-        ny,
-        overlap,
-        contacts: [contact]
+        nx,ny,overlap,
+        contacts:[{
+            x:circle.x+nx*(circle.radius-overlap*0.5),
+            y:circle.y+ny*(circle.radius-overlap*0.5)
+        }]
     };
 }
 
+function checkCollision(a,b) {
+    if (a.shape==="circle"&&b.shape==="circle") return circleCollision(a,b);
+    if (a.shape==="square"&&b.shape==="square") return squareCollision(a,b);
 
-// ================================
-// 统一碰撞检测
-// ================================
-
-function checkCollision(a, b) {
-    if (a.shape === "circle" && b.shape === "circle") {
-        return circleCollision(a, b);
+    if (a.shape==="circle"&&b.shape==="square") {
+        return circleSquareCollision(a,b);
     }
 
-    if (a.shape === "square" && b.shape === "square") {
-        return squareCollision(a, b);
-    }
-
-    if (a.shape === "circle" && b.shape === "square") {
-        return circleSquareCollision(a, b);
-    }
-
-    if (a.shape === "square" && b.shape === "circle") {
-        const collision = circleSquareCollision(b, a);
-
+    if (a.shape==="square"&&b.shape==="circle") {
+        const collision=circleSquareCollision(b,a);
         if (!collision) return null;
 
         return {
-            nx: -collision.nx,
-            ny: -collision.ny,
-            overlap: collision.overlap,
-            contacts: collision.contacts
+            nx:-collision.nx,
+            ny:-collision.ny,
+            overlap:collision.overlap,
+            contacts:collision.contacts
         };
     }
 
     return null;
 }
 
-
-// ================================
 // 果冻形变
-// ================================
+function applyJelly(p,nx,ny,impact) {
+    const strength=Math.min(JELLY_STRENGTH,Math.abs(impact)*0.035);
+    const horizontalImpact=Math.abs(nx);
+    const verticalImpact=Math.abs(ny);
+    const squeeze=strength*0.9;
 
-function applyJelly(p, nx, ny, impact) {
-    const strength = Math.min(
-        JELLY_STRENGTH,
-        Math.abs(impact) * 0.035
-    );
+    p.squeezeX-=horizontalImpact*squeeze;
+    p.squeezeY-=verticalImpact*squeeze;
+    p.squeezeX+=verticalImpact*squeeze*0.65;
+    p.squeezeY+=horizontalImpact*squeeze*0.65;
 
-    const horizontalImpact = Math.abs(nx);
-    const verticalImpact = Math.abs(ny);
+    p.squeezeX=clamp(p.squeezeX,0.76,1.24);
+    p.squeezeY=clamp(p.squeezeY,0.76,1.24);
 
-    const squeeze = strength * 0.9;
-
-    p.squeezeX -= horizontalImpact * squeeze;
-    p.squeezeY -= verticalImpact * squeeze;
-
-    p.squeezeX += verticalImpact * squeeze * 0.65;
-    p.squeezeY += horizontalImpact * squeeze * 0.65;
-
-    p.squeezeX = clamp(p.squeezeX, 0.76, 1.24);
-    p.squeezeY = clamp(p.squeezeY, 0.76, 1.24);
-
-    p.squeezeVX += (1 - p.squeezeX) * 0.12;
-    p.squeezeVY += (1 - p.squeezeY) * 0.12;
+    p.squeezeVX+=(1-p.squeezeX)*0.12;
+    p.squeezeVY+=(1-p.squeezeY)*0.12;
 }
 
+// 两物体冲量
+function applyPairImpulse(a,b,contact,nx,ny) {
+    const raX=contact.x-a.x,raY=contact.y-a.y;
+    const rbX=contact.x-b.x,rbY=contact.y-b.y;
 
-// ================================
-// 两个物体之间的冲量
-// ================================
+    const va=velocityAtPoint(a,raX,raY);
+    const vb=velocityAtPoint(b,rbX,rbY);
 
-function applyPairImpulse(a, b, contact, nx, ny) {
-    const raX = contact.x - a.x;
-    const raY = contact.y - a.y;
+    const rvx=vb.x-va.x,rvy=vb.y-va.y;
+    const vn=dot(rvx,rvy,nx,ny);
 
-    const rbX = contact.x - b.x;
-    const rbY = contact.y - b.y;
+    if (vn>=0) return 0;
 
-    const va = velocityAtPoint(a, raX, raY);
-    const vb = velocityAtPoint(b, rbX, rbY);
+    const invMassA=1/a.mass,invMassB=1/b.mass;
+    const invIA=1/a.inertia,invIB=1/b.inertia;
 
-    const rvx = vb.x - va.x;
-    const rvy = vb.y - va.y;
+    const raCrossN=cross(raX,raY,nx,ny);
+    const rbCrossN=cross(rbX,rbY,nx,ny);
 
-    const vn = dot(rvx, rvy, nx, ny);
+    const denominator=invMassA+invMassB+
+        raCrossN*raCrossN*invIA+rbCrossN*rbCrossN*invIB;
 
-    if (vn >= 0) return 0;
+    const restitution=Math.abs(vn)>RESTITUTION_THRESHOLD?RESTITUTION:0;
+    const j=-(1+restitution)*vn/denominator;
 
-    const invMassA = 1 / a.mass;
-    const invMassB = 1 / b.mass;
+    const impulseX=j*nx,impulseY=j*ny;
 
-    const invIA = 1 / a.inertia;
-    const invIB = 1 / b.inertia;
+    a.vx-=impulseX*invMassA;
+    a.vy-=impulseY*invMassA;
+    a.angularVelocity-=cross(raX,raY,impulseX,impulseY)*invIA;
 
-    const raCrossN = cross(raX, raY, nx, ny);
-    const rbCrossN = cross(rbX, rbY, nx, ny);
+    b.vx+=impulseX*invMassB;
+    b.vy+=impulseY*invMassB;
+    b.angularVelocity+=cross(rbX,rbY,impulseX,impulseY)*invIB;
 
-    const denominator =
-        invMassA +
-        invMassB +
-        raCrossN * raCrossN * invIA +
-        rbCrossN * rbCrossN * invIB;
+    const va2=velocityAtPoint(a,raX,raY);
+    const vb2=velocityAtPoint(b,rbX,rbY);
 
-    const restitution =
-        Math.abs(vn) > RESTITUTION_THRESHOLD
-        ? RESTITUTION
-        : 0;
+    const tx=-ny,ty=nx;
+    const vt=dot(vb2.x-va2.x,vb2.y-va2.y,tx,ty);
 
-    const j = -(1 + restitution) * vn / denominator;
+    const raCrossT=cross(raX,raY,tx,ty);
+    const rbCrossT=cross(rbX,rbY,tx,ty);
 
-    const impulseX = j * nx;
-    const impulseY = j * ny;
+    const tangentDenominator=invMassA+invMassB+
+        raCrossT*raCrossT*invIA+rbCrossT*rbCrossT*invIB;
 
-    a.vx -= impulseX * invMassA;
-    a.vy -= impulseY * invMassA;
+    let jt=-vt/tangentDenominator;
+    const maxFriction=j*CONTACT_FRICTION;
+    jt=clamp(jt,-maxFriction,maxFriction);
 
-    a.angularVelocity -=
-        cross(raX, raY, impulseX, impulseY) * invIA;
+    const fx=jt*tx,fy=jt*ty;
 
-    b.vx += impulseX * invMassB;
-    b.vy += impulseY * invMassB;
+    a.vx-=fx*invMassA;
+    a.vy-=fy*invMassA;
+    b.vx+=fx*invMassB;
+    b.vy+=fy*invMassB;
 
-    b.angularVelocity +=
-        cross(rbX, rbY, impulseX, impulseY) * invIB;
-
-    const va2 = velocityAtPoint(a, raX, raY);
-    const vb2 = velocityAtPoint(b, rbX, rbY);
-
-    const tx = -ny;
-    const ty = nx;
-
-    const vt = dot(
-        vb2.x - va2.x,
-        vb2.y - va2.y,
-        tx,
-        ty
-    );
-
-    const raCrossT = cross(raX, raY, tx, ty);
-    const rbCrossT = cross(rbX, rbY, tx, ty);
-
-    const tangentDenominator =
-        invMassA +
-        invMassB +
-        raCrossT * raCrossT * invIA +
-        rbCrossT * rbCrossT * invIB;
-
-    let jt = -vt / tangentDenominator;
-
-    const maxFriction = j * CONTACT_FRICTION;
-
-    jt = clamp(jt, -maxFriction, maxFriction);
-
-    const fx = jt * tx;
-    const fy = jt * ty;
-
-    a.vx -= fx * invMassA;
-    a.vy -= fy * invMassA;
-
-    b.vx += fx * invMassB;
-    b.vy += fy * invMassB;
-
-    a.angularVelocity -=
-        cross(raX, raY, fx, fy) * invIA;
-
-    b.angularVelocity +=
-        cross(rbX, rbY, fx, fy) * invIB;
+    a.angularVelocity-=cross(raX,raY,fx,fy)*invIA;
+    b.angularVelocity+=cross(rbX,rbY,fx,fy)*invIB;
 
     clampSpeed(a);
     clampSpeed(b);
@@ -1352,977 +1027,626 @@ function applyPairImpulse(a, b, contact, nx, ny) {
     return Math.abs(vn);
 }
 
+function correctCollisionPosition(a,b,collision) {
+    const depth=Math.max(collision.overlap-POSITION_SLOP,0);
+    if (depth<=0) return;
 
-// ================================
-// 方块之间的位置修正
-// ================================
+    const invMassA=1/a.mass,invMassB=1/b.mass;
+    const totalInvMass=invMassA+invMassB;
+    const correction=depth*POSITION_PERCENT/totalInvMass;
 
-function correctCollisionPosition(a, b, collision) {
-    const depth = Math.max(
-        collision.overlap - POSITION_SLOP,
-        0
-    );
-
-    if (depth <= 0) return;
-
-    const invMassA = 1 / a.mass;
-    const invMassB = 1 / b.mass;
-
-    const totalInvMass = invMassA + invMassB;
-
-    const correction =
-        depth * POSITION_PERCENT / totalInvMass;
-
-    a.x -= collision.nx * correction * invMassA;
-    a.y -= collision.ny * correction * invMassA;
-
-    b.x += collision.nx * correction * invMassB;
-    b.y += collision.ny * correction * invMassB;
+    a.x-=collision.nx*correction*invMassA;
+    a.y-=collision.ny*correction*invMassA;
+    b.x+=collision.nx*correction*invMassB;
+    b.y+=collision.ny*correction*invMassB;
 }
 
+function resolveCollision(a,b,collision) {
+    if (!collision||a.merged||b.merged) return;
 
-// ================================
-// 完整方块碰撞响应
-// ================================
+    correctCollisionPosition(a,b,collision);
 
-function resolveCollision(a, b, collision) {
-    if (!collision || a.merged || b.merged) return;
-
-    correctCollisionPosition(a, b, collision);
-
-    let strongestImpact = 0;
+    let strongestImpact=0;
 
     for (const contact of collision.contacts) {
-        const impact = applyPairImpulse(
-            a,
-            b,
-            contact,
-            collision.nx,
-            collision.ny
-        );
-
-        strongestImpact = Math.max(strongestImpact, impact);
+        const impact=applyPairImpulse(a,b,contact,collision.nx,collision.ny);
+        strongestImpact=Math.max(strongestImpact,impact);
     }
 
-    if (strongestImpact > 0.15) {
-        applyJelly(
-            a,
-            collision.nx,
-            collision.ny,
-            strongestImpact
-        );
-
-        applyJelly(
-            b,
-            -collision.nx,
-            -collision.ny,
-            strongestImpact
-        );
+    if (strongestImpact>0.15) {
+        applyJelly(a,collision.nx,collision.ny,strongestImpact);
+        applyJelly(b,-collision.nx,-collision.ny,strongestImpact);
     }
 
-    if (
-        a.value === b.value &&
-        a.value < 2048 &&
-        !a.merged &&
-        !b.merged
-    ) {
-        mergePieces(a, b);
+    const isReverse = gameMode === "reverse" || gameMode === "reverseCheat";
+    const canMerge = isReverse
+        ? a.value > 1
+        : a.value < 2048;
+
+    if (a.value===b.value&&canMerge&&!a.merged&&!b.merged) {
+        mergePieces(a,b);
     }
 }
 
+// 静态接触冲量
+function applyStaticContact(p,contact,nx,ny,friction) {
+    const rx=contact.x-p.x,ry=contact.y-p.y;
+    const velocity=velocityAtPoint(p,rx,ry);
+    const vn=dot(velocity.x,velocity.y,nx,ny);
 
-// ================================
-// 静态墙面接触冲量
-// ================================
+    if (vn>=0) return 0;
 
-function applyStaticContact(p, contact, nx, ny, friction) {
-    const rx = contact.x - p.x;
-    const ry = contact.y - p.y;
+    const invMass=1/p.mass,invI=1/p.inertia;
+    const rCrossN=cross(rx,ry,nx,ny);
+    const denominator=invMass+rCrossN*rCrossN*invI;
 
-    const velocity = velocityAtPoint(p, rx, ry);
+    const restitution=Math.abs(vn)>RESTITUTION_THRESHOLD?RESTITUTION:0;
+    const j=-(1+restitution)*vn/denominator;
 
-    const vn = dot(velocity.x, velocity.y, nx, ny);
+    const impulseX=j*nx,impulseY=j*ny;
 
-    if (vn >= 0) return 0;
+    p.vx+=impulseX*invMass;
+    p.vy+=impulseY*invMass;
+    p.angularVelocity+=cross(rx,ry,impulseX,impulseY)*invI;
 
-    const invMass = 1 / p.mass;
-    const invI = 1 / p.inertia;
+    const tx=-ny,ty=nx;
+    const velocityAfter=velocityAtPoint(p,rx,ry);
+    const vt=dot(velocityAfter.x,velocityAfter.y,tx,ty);
+    const rCrossT=cross(rx,ry,tx,ty);
+    const tangentDenominator=invMass+rCrossT*rCrossT*invI;
 
-    const rCrossN = cross(rx, ry, nx, ny);
+    let jt=-vt/tangentDenominator;
+    const maxFriction=j*friction;
+    jt=clamp(jt,-maxFriction,maxFriction);
 
-    const denominator =
-        invMass + rCrossN * rCrossN * invI;
-
-    const restitution =
-        Math.abs(vn) > RESTITUTION_THRESHOLD
-        ? RESTITUTION
-        : 0;
-
-    const j = -(1 + restitution) * vn / denominator;
-
-    const impulseX = j * nx;
-    const impulseY = j * ny;
-
-    p.vx += impulseX * invMass;
-    p.vy += impulseY * invMass;
-
-    p.angularVelocity +=
-        cross(rx, ry, impulseX, impulseY) * invI;
-
-    const tx = -ny;
-    const ty = nx;
-
-    const velocityAfter = velocityAtPoint(p, rx, ry);
-
-    const vt = dot(
-        velocityAfter.x,
-        velocityAfter.y,
-        tx,
-        ty
-    );
-
-    const rCrossT = cross(rx, ry, tx, ty);
-
-    const tangentDenominator =
-        invMass + rCrossT * rCrossT * invI;
-
-    let jt = -vt / tangentDenominator;
-
-    const maxFriction = j * friction;
-
-    jt = clamp(jt, -maxFriction, maxFriction);
-
-    const fx = jt * tx;
-    const fy = jt * ty;
-
-    p.vx += fx * invMass;
-    p.vy += fy * invMass;
-
-    p.angularVelocity +=
-        cross(rx, ry, fx, fy) * invI;
+    const fx=jt*tx,fy=jt*ty;
+    p.vx+=fx*invMass;
+    p.vy+=fy*invMass;
+    p.angularVelocity+=cross(rx,ry,fx,fy)*invI;
 
     clampSpeed(p);
-
     return Math.abs(vn);
 }
 
+function correctStaticPosition(p,nx,ny,penetration) {
+    const depth=Math.max(penetration-POSITION_SLOP,0);
+    if (depth<=0) return;
 
-// ================================
-// 静态接触位置修正
-// ================================
-
-function correctStaticPosition(p, nx, ny, penetration) {
-    const depth = Math.max(penetration - POSITION_SLOP, 0);
-
-    if (depth <= 0) return;
-
-    p.x += nx * depth * POSITION_PERCENT;
-    p.y += ny * depth * POSITION_PERCENT;
+    p.x+=nx*depth*POSITION_PERCENT;
+    p.y+=ny*depth*POSITION_PERCENT;
 }
 
-
-// ================================
-// 获取物体与墙面的接触点
-// ================================
-
-function getStaticContacts(p, nx, ny, plane) {
-    const vertices = getSquareVertices(p);
-
-    const tangent = {
-        x: -ny,
-        y: nx
-    };
-
-    const contacts = [];
+function getStaticContacts(p,nx,ny,plane) {
+    const vertices=getSquareVertices(p);
+    const tangent={x:-ny,y:nx};
+    const contacts=[];
 
     for (const v of vertices) {
-        const distance =
-            dot(v.x, v.y, nx, ny) - plane;
+        const distance=dot(v.x,v.y,nx,ny)-plane;
 
-        if (distance < 0.5) {
+        if (distance<0.5) {
             contacts.push({
-                x: v.x,
-                y: v.y,
-                penetration: -distance,
-                tangentValue: dot(
-                    v.x,
-                    v.y,
-                    tangent.x,
-                    tangent.y
-                )
+                x:v.x,y:v.y,
+                penetration:-distance,
+                tangentValue:dot(v.x,v.y,tangent.x,tangent.y)
             });
         }
     }
 
-    if (contacts.length === 0) return [];
+    if (!contacts.length) return [];
 
-    contacts.sort((a, b) =>
-        a.tangentValue - b.tangentValue
-    );
+    contacts.sort((a,b)=>a.tangentValue-b.tangentValue);
+    if (contacts.length===1) return contacts;
 
-    if (contacts.length === 1) {
-        return contacts;
-    }
-
-    return [
-        contacts[0],
-        contacts[contacts.length - 1]
-    ];
+    return [contacts[0],contacts[contacts.length-1]];
 }
 
-
-// ================================
-// 圆形与墙面接触
-// ================================
-
-function getCircleStaticContact(p, nx, ny, plane) {
-    const contact = {
-        x: p.x - nx * p.radius,
-        y: p.y - ny * p.radius
+function getCircleStaticContact(p,nx,ny,plane) {
+    const contact={
+        x:p.x-nx*p.radius,
+        y:p.y-ny*p.radius
     };
 
-    const distance =
-        dot(contact.x, contact.y, nx, ny) - plane;
+    const distance=dot(contact.x,contact.y,nx,ny)-plane;
+    if (distance>=0) return [];
 
-    if (distance >= 0) return [];
-
-    return [{
-        ...contact,
-        penetration: -distance
-    }];
+    return [{...contact,penetration:-distance}];
 }
 
+function solveStaticSurface(p,nx,ny,plane,friction) {
+    let contacts=p.shape==="circle"
+        ?getCircleStaticContact(p,nx,ny,plane)
+        :getStaticContacts(p,nx,ny,plane);
 
-// ================================
-// 墙壁和地面碰撞
-// ================================
+    if (!contacts.length) return;
 
-function solveStaticSurface(p, nx, ny, plane, friction) {
-    let contacts;
-
-    if (p.shape === "circle") {
-        contacts = getCircleStaticContact(
-            p,
-            nx,
-            ny,
-            plane
-        );
-    } else {
-        contacts = getStaticContacts(
-            p,
-            nx,
-            ny,
-            plane
-        );
+    let maxPenetration=0;
+    for (const contact of contacts) {
+        maxPenetration=Math.max(maxPenetration,contact.penetration);
     }
 
-    if (contacts.length === 0) return;
+    correctStaticPosition(p,nx,ny,maxPenetration);
 
-    let maxPenetration = 0;
+    contacts=p.shape==="circle"
+        ?getCircleStaticContact(p,nx,ny,plane)
+        :getStaticContacts(p,nx,ny,plane);
+
+    let strongestImpact=0;
 
     for (const contact of contacts) {
-        maxPenetration = Math.max(
-            maxPenetration,
-            contact.penetration
-        );
+        const impact=applyStaticContact(p,contact,nx,ny,friction);
+        strongestImpact=Math.max(strongestImpact,impact);
     }
 
-    correctStaticPosition(
-        p,
-        nx,
-        ny,
-        maxPenetration
-    );
-
-    if (p.shape === "circle") {
-        contacts = getCircleStaticContact(p, nx, ny, plane);
-    } else {
-        contacts = getStaticContacts(p, nx, ny, plane);
-    }
-
-    let strongestImpact = 0;
-
-    for (const contact of contacts) {
-        const impact = applyStaticContact(
-            p,
-            contact,
-            nx,
-            ny,
-            friction
-        );
-
-        strongestImpact = Math.max(
-            strongestImpact,
-            impact
-        );
-    }
-
-    if (strongestImpact > 0.15) {
-        applyJelly(
-            p,
-            nx,
-            ny,
-            strongestImpact
-        );
+    if (strongestImpact>0.15) {
+        applyJelly(p,nx,ny,strongestImpact);
     }
 }
-
-
-// ================================
-// 墙壁和地面碰撞入口
-// ================================
 
 function applyWallAndFloor(p) {
-    solveStaticSurface(
-        p,
-        1, 0,
-        WALL,
-        CONTACT_FRICTION
-    );
-
-    solveStaticSurface(
-        p,
-        -1, 0,
-        -(W - WALL),
-        CONTACT_FRICTION
-    );
-
-    solveStaticSurface(
-        p,
-        0, -1,
-        -(H - WALL),
-        GROUND_FRICTION
-    );
+    solveStaticSurface(p,1,0,WALL,CONTACT_FRICTION);
+    solveStaticSurface(p,-1,0,-(W-WALL),CONTACT_FRICTION);
+    solveStaticSurface(p,0,-1,-(H-WALL),GROUND_FRICTION);
 }
 
+function applyAngularFriction(p,step) {
+    const friction=ANGULAR_FRICTION*step;
 
-// ================================
-// 旋转摩擦
-// ================================
-
-function applyAngularFriction(p, step) {
-    const friction = ANGULAR_FRICTION * step;
-
-    if (p.angularVelocity > 0) {
-        p.angularVelocity = Math.max(
-            0,
-            p.angularVelocity - friction
-        );
-    } else if (p.angularVelocity < 0) {
-        p.angularVelocity = Math.min(
-            0,
-            p.angularVelocity + friction
-        );
+    if (p.angularVelocity>0) {
+        p.angularVelocity=Math.max(0,p.angularVelocity-friction);
+    } else if (p.angularVelocity<0) {
+        p.angularVelocity=Math.min(0,p.angularVelocity+friction);
     }
 
-    p.angularVelocity *= Math.pow(
-        ANGULAR_DAMPING,
-        step
+    p.angularVelocity*=Math.pow(ANGULAR_DAMPING,step);
+    p.angularVelocity=clamp(
+        p.angularVelocity,-MAX_ANGULAR_SPEED,MAX_ANGULAR_SPEED
     );
 
-    p.angularVelocity = clamp(
-        p.angularVelocity,
-        -MAX_ANGULAR_SPEED,
-        MAX_ANGULAR_SPEED
-    );
-
-    if (
-        Math.abs(p.angularVelocity) <
-        ANGULAR_STOP_THRESHOLD
-    ) {
-        p.angularVelocity = 0;
+    if (Math.abs(p.angularVelocity)<ANGULAR_STOP_THRESHOLD) {
+        p.angularVelocity=0;
     }
 }
 
+function updatePiece(p,dt) {
+    const step=Math.min(dt/16.67,2);
+    p.age+=dt;
 
-// ================================
-// 单个图形更新
-// ================================
+    p.vy+=GRAVITY*step;
+    p.vx*=Math.pow(AIR_FRICTION,step);
+    p.vy*=Math.pow(AIR_FRICTION,step);
 
-function updatePiece(p, dt) {
-    const step = Math.min(dt / 16.67, 2);
+    p.x+=p.vx*step;
+    p.y+=p.vy*step;
 
-    p.age += dt;
+    applyAngularFriction(p,step);
+    p.rotation+=p.angularVelocity*step;
 
-    p.vy += GRAVITY * step;
+    p.squeezeVX+=(1-p.squeezeX)*SQUEEZE_SPRING*step;
+    p.squeezeVY+=(1-p.squeezeY)*SQUEEZE_SPRING*step;
 
-    p.vx *= Math.pow(AIR_FRICTION, step);
-    p.vy *= Math.pow(AIR_FRICTION, step);
+    p.squeezeVX*=Math.pow(SQUEEZE_DAMPING,step);
+    p.squeezeVY*=Math.pow(SQUEEZE_DAMPING,step);
 
-    p.x += p.vx * step;
-    p.y += p.vy * step;
+    p.squeezeX+=p.squeezeVX*step;
+    p.squeezeY+=p.squeezeVY*step;
 
-    applyAngularFriction(p, step);
-    p.rotation += p.angularVelocity * step;
+    p.squeezeX=clamp(p.squeezeX,0.76,1.24);
+    p.squeezeY=clamp(p.squeezeY,0.76,1.24);
 
-    p.squeezeVX +=
-        (1 - p.squeezeX) * SQUEEZE_SPRING * step;
-
-    p.squeezeVY +=
-        (1 - p.squeezeY) * SQUEEZE_SPRING * step;
-
-    p.squeezeVX *= Math.pow(SQUEEZE_DAMPING, step);
-    p.squeezeVY *= Math.pow(SQUEEZE_DAMPING, step);
-
-    p.squeezeX += p.squeezeVX * step;
-    p.squeezeY += p.squeezeVY * step;
-
-    p.squeezeX = clamp(p.squeezeX, 0.76, 1.24);
-    p.squeezeY = clamp(p.squeezeY, 0.76, 1.24);
-
-    if (
-        Math.abs(p.squeezeX - 1) < 0.001 &&
-        Math.abs(p.squeezeVX) < 0.001
-    ) {
-        p.squeezeX = 1;
-        p.squeezeVX = 0;
+    if (Math.abs(p.squeezeX-1)<0.001&&Math.abs(p.squeezeVX)<0.001) {
+        p.squeezeX=1;
+        p.squeezeVX=0;
     }
 
-    if (
-        Math.abs(p.squeezeY - 1) < 0.001 &&
-        Math.abs(p.squeezeVY) < 0.001
-    ) {
-        p.squeezeY = 1;
-        p.squeezeVY = 0;
+    if (Math.abs(p.squeezeY-1)<0.001&&Math.abs(p.squeezeVY)<0.001) {
+        p.squeezeY=1;
+        p.squeezeVY=0;
     }
 
     clampSpeed(p);
 }
 
-
-// ================================
-// 物理系统
-// ================================
-
 function updatePhysics(dt) {
     for (const p of pieces) {
-        if (!p.merged) {
-            updatePiece(p, dt);
-        }
+        if (!p.merged) updatePiece(p,dt);
     }
 
-    for (let iteration = 0; iteration < 4; iteration++) {
-        for (let i = 0; i < pieces.length; i++) {
-            const a = pieces[i];
-
+    for (let iteration=0;iteration<4;iteration++) {
+        for (let i=0;i<pieces.length;i++) {
+            const a=pieces[i];
             if (a.merged) continue;
 
-            for (let j = i + 1; j < pieces.length; j++) {
-                const b = pieces[j];
-
+            for (let j=i+1;j<pieces.length;j++) {
+                const b=pieces[j];
                 if (b.merged) continue;
 
-                const collision = checkCollision(a, b);
-
-                if (collision) {
-                    resolveCollision(a, b, collision);
-                }
+                const collision=checkCollision(a,b);
+                if (collision) resolveCollision(a,b,collision);
             }
         }
 
         for (const p of pieces) {
-            if (!p.merged) {
-                applyWallAndFloor(p);
-            }
+            if (!p.merged) applyWallAndFloor(p);
         }
     }
 
-    pieces = pieces.filter(p => !p.merged);
-
-    pieces = pieces.filter(p =>
-        p.x > -150 &&
-        p.x < W + 150 &&
-        p.y < H + 200
+    pieces=pieces.filter(p=>!p.merged);
+    pieces=pieces.filter(p=>
+        p.x>-150&&p.x<W+150&&p.y<H+200
     );
 }
 
-
-// ================================
-// 2048礼花动画
-// ================================
-
-function createFireworks(x, y) {
-    const colors = [
-        "#e8b86d",
-        "#d78b83",
-        "#a7b8aa",
-        "#b5b7c5",
-        "#d8a9bd",
-        "#f0d89a",
-        "#ffffff"
+// 礼花
+function createFireworks(x,y,label="2048!") {
+    const colors=[
+        "#e8b86d","#d78b83","#a7b8aa",
+        "#b5b7c5","#d8a9bd","#f0d89a","#ffffff"
     ];
 
-    for (let burst = 0; burst < 2; burst++) {
+    for (let burst=0;burst<2;burst++) {
+        const centerX=x+(burst===0?-18:18);
+        const centerY=y-10;
+        const particles=[];
+        const count=55;
 
-        const centerX = x + (burst === 0 ? -18 : 18);
-        const centerY = y - 10;
-
-        const particles = [];
-        const count = 55;
-
-        for (let i = 0; i < count; i++) {
-            const angle =
-                Math.PI * 2 * i / count +
-                Math.random() * 0.12;
-
-            const speed = 2.5 + Math.random() * 5.5;
+        for (let i=0;i<count;i++) {
+            const angle=Math.PI*2*i/count+Math.random()*0.12;
+            const speed=2.5+Math.random()*5.5;
 
             particles.push({
-                x: centerX,
-                y: centerY,
-
-                vx: Math.cos(angle) * speed,
-                vy: Math.sin(angle) * speed,
-
-                size: 2 + Math.random() * 3.5,
-
-                color: colors[
-                    Math.floor(Math.random() * colors.length)
-                ],
-
-                life: 0,
-                maxLife: 0.9 + Math.random() * 0.6
+                x:centerX,y:centerY,
+                vx:Math.cos(angle)*speed,
+                vy:Math.sin(angle)*speed,
+                size:2+Math.random()*3.5,
+                color:colors[Math.floor(Math.random()*colors.length)],
+                life:0,
+                maxLife:0.9+Math.random()*0.6
             });
         }
 
         fireworks.push({
-            x: centerX,
-            y: centerY,
-            particles,
-            life: 0,
-            maxLife: 1.5
+            x:centerX,y:centerY,particles,
+            life:0,maxLife:1.5,label
         });
     }
 }
 
-
-// ================================
-// 绘制礼花
-// ================================
-
 function drawFireworks(dt) {
     for (const burst of fireworks) {
-
-        burst.life += dt / 1000;
+        burst.life+=dt/1000;
 
         for (const p of burst.particles) {
+            p.life+=dt/1000;
+            const step=dt/16.67;
 
-            p.life += dt / 1000;
+            p.vy+=0.10*step;
+            p.vx*=Math.pow(0.985,step);
+            p.vy*=Math.pow(0.985,step);
 
-            const step = dt / 16.67;
+            p.x+=p.vx*step;
+            p.y+=p.vy*step;
 
-            p.vy += 0.10 * step;
-
-            p.vx *= Math.pow(0.985, step);
-            p.vy *= Math.pow(0.985, step);
-
-            p.x += p.vx * step;
-            p.y += p.vy * step;
-
-            const alpha = Math.max(
-                0,
-                1 - p.life / p.maxLife
-            );
+            const alpha=Math.max(0,1-p.life/p.maxLife);
 
             ctx.save();
-
-            ctx.globalAlpha = alpha;
-            ctx.fillStyle = p.color;
-
-            ctx.shadowColor = p.color;
-            ctx.shadowBlur = 8;
-
+            ctx.globalAlpha=alpha;
+            ctx.fillStyle=p.color;
+            ctx.shadowColor=p.color;
+            ctx.shadowBlur=8;
             ctx.beginPath();
-
-            ctx.arc(
-                p.x,
-                p.y,
-                p.size,
-                0,
-                Math.PI * 2
-            );
-
+            ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
             ctx.fill();
-
             ctx.restore();
         }
 
-        const textAlpha = Math.max(
-            0,
-            1 - burst.life / 1.5
-        );
+        const textAlpha=Math.max(0,1-burst.life/1.5);
 
         ctx.save();
-
-        ctx.globalAlpha = textAlpha;
-
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-
-        ctx.font = 'bold 30px "Microsoft JhengHei", "微软正黑体", sans-serif';
-        ctx.fillStyle = "#a18d6d";
-
-        ctx.shadowColor = "#ffffff";
-        ctx.shadowBlur = 12;
+        ctx.globalAlpha=textAlpha;
+        ctx.textAlign="center";
+        ctx.textBaseline="middle";
+        ctx.font='bold 30px "Microsoft JhengHei", "微软正黑体", sans-serif';
+        ctx.fillStyle="#a18d6d";
+        ctx.shadowColor="#ffffff";
+        ctx.shadowBlur=12;
 
         ctx.fillText(
-            "2048!",
+            burst.label,
             burst.x,
-            burst.y - 55 - burst.life * 18
+            burst.y-55-burst.life*18
         );
 
         ctx.restore();
     }
 
-    fireworks = fireworks.filter(burst =>
-        burst.life < burst.maxLife
-    );
+    fireworks=fireworks.filter(burst=>burst.life<burst.maxLife);
 }
 
-
-// ================================
 // 合成
-// ================================
+function mergePieces(a,b) {
+    if (a.merged||b.merged) return;
 
-function mergePieces(a, b) {
-    if (a.merged || b.merged) return;
+    const isReverse = gameMode === "reverse" || gameMode === "reverseCheat";
 
-    a.merged = true;
-    b.merged = true;
+    if (isReverse && a.value === 1) return;
 
-    const newValue = a.value * 2;
+    a.merged=true;
+    b.merged=true;
 
-    const x = (a.x + b.x) / 2;
-    const y = (a.y + b.y) / 2;
+    const newValue=isReverse
+        ?(a.value===2?1:a.value/2)
+        :a.value*2;
 
-    score += newValue;
+    const x=(a.x+b.x)/2;
+    const y=(a.y+b.y)/2;
+
+    score+=newValue;
     updateUI();
 
     effects.push({
-        x,
-        y,
-        value: newValue,
-        life: 0,
-        maxLife: 0.65
+        x,y,value:newValue,
+        life:0,maxLife:0.65
     });
 
-    if (newValue === 2048) {
-        createFireworks(x, y);
+    if (isReverse) {
+        if (newValue===1) {
+            playReverseFinalSound();
+            createFireworks(x,y,"终极合成！");
+        } else {
+            playMergeSound();
+        }
+    } else {
+        playMergeSound();
+
+        if (newValue===2048) {
+            playWinSound();
+            createFireworks(x,y,"2048!");
+        }
     }
 
-    if (newValue <= 2048) {
-        const resultShape = randomShape();
-
-        const p = createPiece(
-            x,
-            y,
-            newValue,
-            resultShape
-        );
-
-        p.vy = -1.5;
-        p.squeezeX = 0.85;
-        p.squeezeY = 1.15;
-    }
+    const p=createPiece(x,y,newValue,randomShape());
+    p.vy=-1.5;
+    p.squeezeX=0.85;
+    p.squeezeY=1.15;
 }
 
-
-// ================================
 // 绘制图形
-// ================================
-
 function drawPiece(p) {
     ctx.save();
-
-    ctx.translate(p.x, p.y);
+    ctx.translate(p.x,p.y);
     ctx.rotate(p.rotation);
+    ctx.scale(p.squeezeX,p.squeezeY);
 
-    ctx.scale(p.squeezeX, p.squeezeY);
+    const r=p.radius;
+    ctx.fillStyle=COLORS[p.value]||"#aaa";
 
-    const r = p.radius;
-
-    ctx.fillStyle = COLORS[p.value] || "#aaa";
-
-    if (p.shape === "circle") {
+    if (p.shape==="circle") {
         ctx.beginPath();
-        ctx.arc(0, 0, r, 0, Math.PI * 2);
+        ctx.arc(0,0,r,0,Math.PI*2);
         ctx.fill();
     } else {
-        const size = r * 1.65;
-        const radius = size * 0.23;
+        const size=r*1.65;
+        const radius=size*0.23;
 
         ctx.beginPath();
-        ctx.roundRect(
-            -size / 2,
-            -size / 2,
-            size,
-            size,
-            radius
-        );
-
+        ctx.roundRect(-size/2,-size/2,size,size,radius);
         ctx.fill();
     }
 
     ctx.beginPath();
-
-    ctx.ellipse(
-        -r * 0.25,
-        -r * 0.35,
-        r * 0.28,
-        r * 0.12,
-        -0.4,
-        0,
-        Math.PI * 2
-    );
-
-    ctx.fillStyle = "rgba(255,255,255,0.22)";
+    ctx.ellipse(-r*0.25,-r*0.35,r*0.28,r*0.12,-0.4,0,Math.PI*2);
+    ctx.fillStyle="rgba(255,255,255,0.22)";
     ctx.fill();
 
-    ctx.fillStyle = "#ffffff";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
+    ctx.fillStyle="#ffffff";
+    ctx.textAlign="center";
+    ctx.textBaseline="middle";
 
-    const fontSize = Math.max(11, r * 0.62);
+    let fontSize=Math.max(11,r*0.62);
 
-    ctx.font = `bold ${fontSize}px "Microsoft JhengHei", "微软正黑体", sans-serif`;
-    ctx.fillText(p.value, 0, 1);
+    if (p.value===1) fontSize=76;
+    if (p.value>=1024&&p.value!==2048) fontSize=r*0.43;
+
+    ctx.font=`bold ${fontSize}px "Microsoft JhengHei", "微软正黑体", sans-serif`;
+    ctx.fillText(p.value,0,1);
 
     ctx.restore();
 }
 
-
-// ================================
 // 合成动画
-// ================================
-
 function drawEffects(dt) {
     for (const e of effects) {
-        e.life += dt / 1000;
-
-        const progress = e.life / e.maxLife;
-        const alpha = Math.max(0, 1 - progress);
+        e.life+=dt/1000;
+        const progress=e.life/e.maxLife;
+        const alpha=Math.max(0,1-progress);
 
         ctx.save();
-
-        ctx.globalAlpha = alpha;
-        ctx.strokeStyle = "#ffffff";
-        ctx.lineWidth = 3;
+        ctx.globalAlpha=alpha;
+        ctx.strokeStyle="#ffffff";
+        ctx.lineWidth=3;
 
         ctx.beginPath();
-
-        ctx.arc(
-            e.x,
-            e.y,
-            10 + progress * 35,
-            0,
-            Math.PI * 2
-        );
-
+        ctx.arc(e.x,e.y,10+progress*35,0,Math.PI*2);
         ctx.stroke();
 
-        ctx.fillStyle = "#8b9185";
-        ctx.font = 'bold 18px "Microsoft JhengHei", "微软正黑体", sans-serif';
-        ctx.textAlign = "center";
+        ctx.fillStyle="#8b9185";
+        ctx.font='bold 18px "Microsoft JhengHei", "微软正黑体", sans-serif';
+        ctx.textAlign="center";
 
         ctx.fillText(
-            "+" + e.value,
+            (gameMode==="reverse"||gameMode==="reverseCheat"?"→ ":"+")+e.value,
             e.x,
-            e.y - 25 - progress * 20
+            e.y-25-progress*20
         );
 
         ctx.restore();
     }
 
-    effects = effects.filter(e => e.life < e.maxLife);
+    effects=effects.filter(e=>e.life<e.maxLife);
 }
 
-
-// ================================
-// 绘制下落预览
-// ================================
-
+// 投放预览
 function drawPreview() {
-    if (gameOver || !gameStarted) return;
+    if (gameOver||!gameStarted) return;
 
-    const r = RADII[nextValue];
+    const r=RADII[nextValue];
 
     ctx.save();
+    ctx.translate(pointerX,35);
+    ctx.fillStyle=COLORS[nextValue];
 
-    ctx.translate(pointerX, 35);
-
-    ctx.fillStyle = COLORS[nextValue];
-
-    if (nextShape === "circle") {
+    if (nextShape==="circle") {
         ctx.beginPath();
-        ctx.arc(0, 0, r, 0, Math.PI * 2);
+        ctx.arc(0,0,r,0,Math.PI*2);
         ctx.fill();
     } else {
-        const size = r * 1.65;
-        const radius = size * 0.23;
-
+        const size=r*1.65;
         ctx.beginPath();
-        ctx.roundRect(
-            -size / 2,
-            -size / 2,
-            size,
-            size,
-            radius
-        );
+        ctx.roundRect(-size/2,-size/2,size,size,size*0.23);
         ctx.fill();
     }
 
-    ctx.fillStyle = "#ffffff";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
+    ctx.fillStyle="#ffffff";
+    ctx.textAlign="center";
+    ctx.textBaseline="middle";
 
-    const fontSize = Math.max(11, r * 0.62);
+    let fontSize=Math.max(11,r*0.62);
+    if (nextValue>=1024) fontSize=r*0.43;
 
-    ctx.font = `bold ${fontSize}px "Microsoft JhengHei", "微软正黑体", sans-serif`;
-    ctx.fillText(nextValue, 0, 1);
-
+    ctx.font=`bold ${fontSize}px "Microsoft JhengHei", "微软正黑体", sans-serif`;
+    ctx.fillText(nextValue,0,1);
     ctx.restore();
 }
 
+// 危险线
+function getBoundaryExtents(p) {
+    if (p.shape==="circle") return {x:p.radius,y:p.radius};
 
-// ================================
-// 危险线警告
-// ================================
+    const h=p.radius*0.825;
+    const c=Math.cos(p.rotation);
+    const s=Math.sin(p.rotation);
+    const extent=h*(Math.abs(c)+Math.abs(s));
+
+    return {x:extent,y:extent};
+}
 
 function hasDangerousPiece() {
     for (const p of pieces) {
-        const bounds = getBoundaryExtents(p);
+        const bounds=getBoundaryExtents(p);
 
-        if (
-            p.y - bounds.y < DANGER_LINE &&
-            p.age > 1000
-        ) {
-            return true;
-        }
+        if (p.y-bounds.y<DANGER_LINE&&p.age>1000) return true;
     }
-
     return false;
 }
 
 function drawDangerWarning() {
     if (!hasDangerousPiece()) return;
 
-    const pulse = 0.85 + Math.sin(performance.now() / 160) * 0.15;
+    const pulse=0.85+Math.sin(performance.now()/160)*0.15;
 
     ctx.save();
-
-    ctx.globalAlpha = pulse;
-
-    ctx.fillStyle = "rgba(174, 103, 82, 0.92)";
+    ctx.globalAlpha=pulse;
+    ctx.fillStyle="rgba(174, 103, 82, 0.92)";
 
     ctx.beginPath();
-    ctx.roundRect(
-        W / 2 - 112,
-        48,
-        224,
-        38,
-        10
-    );
-
+    ctx.roundRect(W/2-112,48,224,38,10);
     ctx.fill();
 
-    ctx.fillStyle = "#ffffff";
-    ctx.font = 'bold 16px "Microsoft JhengHei", "微软正黑体", sans-serif';
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-
-    ctx.fillText(
-        "⚠ 注意！物体已超过危险线",
-        W / 2,
-        67
-    );
-
+    ctx.fillStyle="#ffffff";
+    ctx.font='bold 16px "Microsoft JhengHei", "微软正黑体", sans-serif';
+    ctx.textAlign="center";
+    ctx.textBaseline="middle";
+    ctx.fillText("⚠ 注意！物体已超过危险线",W/2,67);
     ctx.restore();
 }
 
-
-// ================================
 // 绘制游戏画面
-// ================================
-
 function draw() {
-    ctx.clearRect(0, 0, W, H);
+    ctx.clearRect(0,0,W,H);
 
     ctx.save();
-
-    ctx.setLineDash([6, 6]);
-    ctx.strokeStyle = "#c9bcb0";
-    ctx.lineWidth = 1;
+    ctx.setLineDash([6,6]);
+    ctx.strokeStyle="#c9bcb0";
+    ctx.lineWidth=1;
 
     ctx.beginPath();
-    ctx.moveTo(WALL, DANGER_LINE);
-    ctx.lineTo(W - WALL, DANGER_LINE);
+    ctx.moveTo(WALL,DANGER_LINE);
+    ctx.lineTo(W-WALL,DANGER_LINE);
     ctx.stroke();
-
     ctx.restore();
 
-    ctx.fillStyle = "#d8d3c9";
-
-    ctx.fillRect(0, 0, WALL, H);
-    ctx.fillRect(W - WALL, 0, WALL, H);
-    ctx.fillRect(0, H - WALL, W, WALL);
+    ctx.fillStyle="#d8d3c9";
+    ctx.fillRect(0,0,WALL,H);
+    ctx.fillRect(W-WALL,0,WALL,H);
+    ctx.fillRect(0,H-WALL,W,H);
 
     drawPreview();
 
-    for (const p of pieces) {
-        drawPiece(p);
-    }
+    for (const p of pieces) drawPiece(p);
 
     drawDangerWarning();
 }
 
+// 投放图形
+function dropPiece(x) {
+    if (!gameStarted||gameOver||!canDrop) return;
 
-// ================================
-// 游戏结束
-// ================================
-
-function checkGameOver(dt) {
-    let dangerous = false;
+    const r=RADII[nextValue];
+    x=clamp(x,WALL+r,W-WALL-r);
 
     for (const p of pieces) {
-        const bounds = getBoundaryExtents(p);
+        if (Math.abs(p.x-x)<p.radius+r+4&&p.y<100&&p.y>15) return;
+    }
 
-        if (
-            p.y - bounds.y < DANGER_LINE &&
-            p.age > 1000
-        ) {
-            dangerous = true;
+    createPiece(x,35,nextValue,nextShape);
+    playDropSound();
+
+    dropCount++;
+    generateNext();
+    updateUI();
+
+    canDrop=false;
+    setTimeout(()=>{canDrop=true;},180);
+}
+
+// 游戏结束
+function checkGameOver(dt) {
+    let dangerous=false;
+
+    for (const p of pieces) {
+        const bounds=getBoundaryExtents(p);
+
+        if (p.y-bounds.y<DANGER_LINE&&p.age>1000) {
+            dangerous=true;
             break;
         }
     }
 
+    const wasDangerous=dangerTimer>0;
+
     if (dangerous) {
-        dangerTimer += dt;
+        dangerTimer+=dt;
+        if (!wasDangerous) playDangerSound();
     } else {
-        dangerTimer = 0;
+        dangerTimer=0;
     }
 
-    if (dangerTimer > 1800 && !gameOver) {
-        gameOver = true;
-
-        document.getElementById("finalScore").textContent = score;
-        document.getElementById("overlay").style.display = "flex";
+    if (dangerTimer>1800&&!gameOver) {
+        gameOver=true;
+        document.getElementById("finalScore").textContent=score;
+        document.getElementById("overlay").style.display="flex";
     }
 }
 
-
-// ================================
 // 主循环
-// ================================
-
 function animate(timestamp) {
-    if (!lastTime) {
-        lastTime = timestamp;
-    }
+    if (!lastTime) lastTime=timestamp;
 
-    const dt = Math.min(timestamp - lastTime, 32);
-    lastTime = timestamp;
+    const dt=Math.min(timestamp-lastTime,32);
+    lastTime=timestamp;
 
-    if (gameStarted && !gameOver) {
+    if (gameStarted&&!gameOver) {
         updatePhysics(dt);
         checkGameOver(dt);
     }
@@ -2336,92 +1660,63 @@ function animate(timestamp) {
     requestAnimationFrame(animate);
 }
 
-
-// ================================
 // 重新开始
-// ================================
-
 function restartGame() {
-    pieces = [];
-    effects = [];
-    fireworks = [];
+    pieces=[];
+    effects=[];
+    fireworks=[];
 
-    score = 0;
-    gameOver = false;
-    dangerTimer = 0;
-
-    dropCount = 0;
+    score=0;
+    gameOver=false;
+    dangerTimer=0;
+    dropCount=0;
 
     generateNext();
 
-    lastTime = 0;
-    canDrop = true;
+    lastTime=0;
+    canDrop=true;
+    pointerX=W/2;
 
-    pointerX = W / 2;
-
-    document.getElementById("overlay").style.display = "none";
-
+    document.getElementById("overlay").style.display="none";
     updateUI();
 }
 
-
-// ================================
 // 按钮事件
-// ================================
+document.getElementById("restartBtn").onclick=restartGame;
+document.getElementById("homeBtn").onclick=backToHome;
 
-document.getElementById("restartBtn").onclick = restartGame;
-document.getElementById("homeBtn").onclick = backToHome;
-
-
-// ================================
-// 鼠标和触屏操作
-// ================================
-
+// 鼠标和触屏
 function getPointerX(event) {
-    const rect = canvas.getBoundingClientRect();
-
-    return (event.clientX - rect.left) * W / rect.width;
+    const rect=canvas.getBoundingClientRect();
+    return (event.clientX-rect.left)*W/rect.width;
 }
 
-canvas.addEventListener("pointerdown", function(event) {
+canvas.addEventListener("pointerdown",function(event) {
     event.preventDefault();
-
-    if (!gameStarted || gameOver) return;
+    if (!gameStarted||gameOver) return;
 
     canvas.setPointerCapture(event.pointerId);
-
-    pointerX = getPointerX(event);
+    pointerX=getPointerX(event);
 });
 
-canvas.addEventListener("pointermove", function(event) {
-    if (!gameStarted || gameOver) return;
+canvas.addEventListener("pointermove",function(event) {
+    if (!gameStarted||gameOver) return;
 
-    pointerX = getPointerX(event);
+    pointerX=getPointerX(event);
+    const r=RADII[nextValue];
 
-    const r = RADII[nextValue];
-
-    pointerX = clamp(
-        pointerX,
-        WALL + r,
-        W - WALL - r
-    );
+    pointerX=clamp(pointerX,WALL+r,W-WALL-r);
 });
 
-canvas.addEventListener("pointerup", function(event) {
+canvas.addEventListener("pointerup",function(event) {
     event.preventDefault();
+    if (!gameStarted||gameOver) return;
 
-    if (!gameStarted || gameOver) return;
-
-    pointerX = getPointerX(event);
-
+    pointerX=getPointerX(event);
     dropPiece(pointerX);
 });
 
-
-// ================================
 // 初始化
-// ================================
-
 updateUI();
 requestAnimationFrame(animate);
 
